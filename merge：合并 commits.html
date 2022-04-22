@@ -1,0 +1,421 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>merge：合并 commits · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="push 的本质.html" />
+    
+    
+    <link rel="prev" href="Git使用教程.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="chapter1.html">
+            
+                <a href="chapter1.html">
+            
+                    
+                    chapter1
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="Git使用教程.html">
+            
+                <a href="Git使用教程.html">
+            
+                    
+                    Git使用教程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.2" data-path="merge：合并 commits.html">
+            
+                <a href="merge：合并 commits.html">
+            
+                    
+                    merge：合并 commits
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="push 的本质.html">
+            
+                <a href="push 的本质.html">
+            
+                    
+                    push 的本质.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="🌳🚀 CS Visualized Useful Git Commands.html">
+            
+                <a href="🌳🚀 CS Visualized Useful Git Commands.html">
+            
+                    
+                    🌳🚀 CS Visualized Useful Git Commands.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >merge：合并 commits</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="merge&#xFF1A;&#x5408;&#x5E76;-commits">merge&#xFF1A;&#x5408;&#x5E76; commits</h1>
+<p>&#x524D;&#x9762;&#x8BF4;&#x5230;&#xFF0C;<code>pull</code> &#x7684;&#x5185;&#x90E8;&#x64CD;&#x4F5C;&#x5176;&#x5B9E;&#x662F;&#x628A;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x53D6;&#x5230;&#x672C;&#x5730;&#x540E;&#xFF08;&#x4F7F;&#x7528;&#x7684;&#x662F; <code>fetch</code>&#xFF09;&#xFF0C;&#x518D;&#x7528;&#x4E00;&#x6B21; <code>merge</code> &#x6765;&#x628A;&#x8FDC;&#x7AEF;&#x4ED3;&#x5E93;&#x7684;&#x65B0; <code>commits</code> &#x5408;&#x5E76;&#x5230;&#x672C;&#x5730;&#x3002;&#x8FD9;&#x4E00;&#x8282;&#x5C31;&#x8BF4;&#x4E00;&#x4E0B;&#xFF0C;<code>merge</code> &#x5230;&#x5E95;&#x662F;&#x4EC0;&#x4E48;&#x3002;</p>
+<h2 id="&#x542B;&#x4E49;&#x548C;&#x7528;&#x6CD5;">&#x542B;&#x4E49;&#x548C;&#x7528;&#x6CD5;</h2>
+<p><code>merge</code> &#x7684;&#x610F;&#x601D;&#x662F;&#x300C;&#x5408;&#x5E76;&#x300D;&#xFF0C;&#x5B83;&#x505A;&#x7684;&#x4E8B;&#x4E5F;&#x662F;&#x5408;&#x5E76;&#xFF1A;&#x6307;&#x5B9A;&#x4E00;&#x4E2A; <code>commit</code>&#xFF0C;&#x628A;&#x5B83;&#x5408;&#x5E76;&#x5230;&#x5F53;&#x524D;&#x7684; <code>commit</code> &#x6765;&#x3002;&#x5177;&#x4F53;&#x6765;&#x8BB2;&#xFF0C;<code>merge</code> &#x505A;&#x7684;&#x4E8B;&#x662F;&#xFF1A;</p>
+<p><strong>&#x4ECE;&#x76EE;&#x6807; <code>commit</code> &#x548C;&#x5F53;&#x524D; <code>commit</code> &#xFF08;&#x5373; <code>HEAD</code> &#x6240;&#x6307;&#x5411;&#x7684; <code>commit</code>&#xFF09;&#x5206;&#x53C9;&#x7684;&#x4F4D;&#x7F6E;&#x8D77;&#xFF0C;&#x628A;&#x76EE;&#x6807; <code>commit</code> &#x7684;&#x8DEF;&#x5F84;&#x4E0A;&#x7684;&#x6240;&#x6709; <code>commit</code> &#x7684;&#x5185;&#x5BB9;&#x4E00;&#x5E76;&#x5E94;&#x7528;&#x5230;&#x5F53;&#x524D; <code>commit</code>&#xFF0C;&#x7136;&#x540E;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x65B0;&#x7684; <code>commit</code>&#x3002;</strong></p>
+<p>&#x4F8B;&#x5982;&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x56FE;&#x4E2D;&#xFF1A;</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/11462107-7b2af5c9aa5f7076.png?imageMogr2/auto-orient/strip|imageView2/2/w/484/format/webp" alt="img"></p>
+<p><code>HEAD</code> &#x6307;&#x5411;&#x4E86; <code>master</code>&#xFF0C;&#x6240;&#x4EE5;&#x5982;&#x679C;&#x8FD9;&#x65F6;&#x6267;&#x884C;&#xFF1A;</p>
+<pre><code class="lang-undefined">git merge branch1
+</code></pre>
+<p>Git &#x4F1A;&#x628A; <code>5</code> &#x548C; <code>6</code> &#x8FD9;&#x4E24;&#x4E2A; <code>commit</code> &#x7684;&#x5185;&#x5BB9;&#x4E00;&#x5E76;&#x5E94;&#x7528;&#x5230; <code>4</code> &#x4E0A;&#xFF0C;&#x7136;&#x540E;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x63D0;&#x4EA4;&#xFF0C;&#x5E76;&#x8DF3;&#x8F6C;&#x5230;&#x63D0;&#x4EA4;&#x4FE1;&#x606F;&#x586B;&#x5199;&#x7684;&#x754C;&#x9762;&#xFF1A;</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/11462107-35e7c4fdfa83cdbf.png?imageMogr2/auto-orient/strip|imageView2/2/w/513/format/webp" alt="img"></p>
+<p><code>merge</code> &#x64CD;&#x4F5C;&#x4F1A;&#x5E2E;&#x4F60;&#x81EA;&#x52A8;&#x5730;&#x586B;&#x5199;&#x7B80;&#x8981;&#x7684;&#x63D0;&#x4EA4;&#x4FE1;&#x606F;&#x3002;&#x5728;&#x63D0;&#x4EA4;&#x4FE1;&#x606F;&#x4FEE;&#x6539;&#x5B8C;&#x6210;&#x540E;&#xFF08;&#x6216;&#x8005;&#x4F60;&#x6253;&#x7B97;&#x4E0D;&#x4FEE;&#x6539;&#x9ED8;&#x8BA4;&#x7684;&#x63D0;&#x4EA4;&#x4FE1;&#x606F;&#xFF09;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x9000;&#x51FA;&#x8FD9;&#x4E2A;&#x754C;&#x9762;&#xFF0C;&#x7136;&#x540E;&#x8FD9;&#x6B21; <code>merge</code> &#x5C31;&#x7B97;&#x5B8C;&#x6210;&#x4E86;&#x3002;</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/11462107-97e312e2cfc9e6f8?imageMogr2/auto-orient/strip|imageView2/2/w/640/format/webp" alt="img"></p>
+<h2 id="&#x9002;&#x7528;&#x573A;&#x666F;">&#x9002;&#x7528;&#x573A;&#x666F;</h2>
+<p><code>merge</code> &#x6709;&#x4EC0;&#x4E48;&#x7528;&#xFF1F;&#x6700;&#x5E38;&#x7528;&#x7684;&#x573A;&#x666F;&#x6709;&#x4E24;&#x5904;&#xFF1A;</p>
+<ol>
+<li><p>&#x5408;&#x5E76;&#x5206;&#x652F;</p>
+<p>&#x5F53;&#x4E00;&#x4E2A; <code>branch</code> &#x7684;&#x5F00;&#x53D1;&#x5DF2;&#x7ECF;&#x5B8C;&#x6210;&#xFF0C;&#x9700;&#x8981;&#x628A;&#x5185;&#x5BB9;&#x5408;&#x5E76;&#x56DE;&#x53BB;&#x65F6;&#xFF0C;&#x7528; <code>merge</code> &#x6765;&#x8FDB;&#x884C;&#x5408;&#x5E76;&#x3002;</p>
+<blockquote>
+<p>&#x90A3; <code>branch</code> &#x53C8;&#x5E94;&#x8BE5;&#x600E;&#x4E48;&#x7528;&#x5462;&#xFF1F;</p>
+<p>&#x4E0B;&#x8282;&#x5C31;&#x8BF4;&#x3002;</p>
+</blockquote>
+</li>
+<li><p><code>pull</code> &#x7684;&#x5185;&#x90E8;&#x64CD;&#x4F5C;</p>
+<p>&#x4E4B;&#x524D;&#x8BF4;&#x8FC7;&#xFF0C;<code>pull</code> &#x7684;&#x5B9E;&#x9645;&#x64CD;&#x4F5C;&#x5176;&#x5B9E;&#x662F;&#x628A;&#x8FDC;&#x7AEF;&#x4ED3;&#x5E93;&#x7684;&#x5185;&#x5BB9;&#x7528; <code>fetch</code> &#x53D6;&#x4E0B;&#x6765;&#x4E4B;&#x540E;&#xFF0C;&#x7528; <code>merge</code> &#x6765;&#x5408;&#x5E76;&#x3002;</p>
+</li>
+</ol>
+<h2 id="&#x7279;&#x6B8A;&#x60C5;&#x51B5;-1&#xFF1A;&#x51B2;&#x7A81;">&#x7279;&#x6B8A;&#x60C5;&#x51B5; 1&#xFF1A;&#x51B2;&#x7A81;</h2>
+<p><code>merge</code> &#x5728;&#x505A;&#x5408;&#x5E76;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x662F;&#x6709;&#x4E00;&#x5B9A;&#x7684;&#x81EA;&#x52A8;&#x5408;&#x5E76;&#x80FD;&#x529B;&#x7684;&#xFF1A;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x5206;&#x652F;&#x6539;&#x4E86; A &#x6587;&#x4EF6;&#xFF0C;&#x53E6;&#x4E00;&#x4E2A;&#x5206;&#x652F;&#x6539;&#x4E86; B &#x6587;&#x4EF6;&#xFF0C;&#x90A3;&#x4E48;&#x5408;&#x5E76;&#x540E;&#x5C31;&#x662F;&#x65E2;&#x6539; A &#x4E5F;&#x6539; B&#xFF0C;&#x8FD9;&#x4E2A;&#x52A8;&#x4F5C;&#x4F1A;&#x81EA;&#x52A8;&#x5B8C;&#x6210;&#xFF1B;&#x5982;&#x679C;&#x4E24;&#x4E2A;&#x5206;&#x652F;&#x90FD;&#x6539;&#x4E86;&#x540C;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x4F46;&#x4E00;&#x4E2A;&#x6539;&#x7684;&#x662F;&#x7B2C; 1 &#x884C;&#xFF0C;&#x53E6;&#x4E00;&#x4E2A;&#x6539;&#x7684;&#x662F;&#x7B2C; 2 &#x884C;&#xFF0C;&#x90A3;&#x4E48;&#x5408;&#x5E76;&#x540E;&#x5C31;&#x662F;&#x7B2C; 1 &#x884C;&#x548C;&#x7B2C; 2 &#x884C;&#x90FD;&#x6539;&#xFF0C;&#x4E5F;&#x662F;&#x81EA;&#x52A8;&#x5B8C;&#x6210;&#x3002;</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/11462107-82c12c7db36da24d?imageMogr2/auto-orient/strip|imageView2/2/w/660/format/webp" alt="img"></p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/11462107-ed839f07e5dc4440?imageMogr2/auto-orient/strip|imageView2/2/w/636/format/webp" alt="img"></p>
+<p>image</p>
+<p>&#x4F46;&#xFF0C;&#x5982;&#x679C;&#x4E24;&#x4E2A;&#x5206;&#x652F;&#x4FEE;&#x6539;&#x4E86;&#x540C;&#x4E00;&#x90E8;&#x5206;&#x5185;&#x5BB9;&#xFF0C;<code>merge</code> &#x7684;&#x81EA;&#x52A8;&#x7B97;&#x6CD5;&#x5C31;&#x641E;&#x4E0D;&#x5B9A;&#x4E86;&#x3002;&#x8FD9;&#x79CD;&#x60C5;&#x51B5; Git &#x79F0;&#x4E4B;&#x4E3A;&#xFF1A;&#x51B2;&#x7A81;&#xFF08;Conflict&#xFF09;&#x3002;</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/11462107-755b4db1bce4bf3b.png?imageMogr2/auto-orient/strip|imageView2/2/w/521/format/webp" alt="img"></p>
+<p>&#x76F4;&#x767D;&#x70B9;&#x8BF4;&#x5C31;&#x662F;&#xFF0C;&#x4F60;&#x7684;&#x4E24;&#x4E2A;&#x5206;&#x652F;&#x6539;&#x4E86;&#x76F8;&#x540C;&#x7684;&#x5185;&#x5BB9;&#xFF0C;Git &#x4E0D;&#x77E5;&#x9053;&#x5E94;&#x8BE5;&#x4EE5;&#x54EA;&#x4E2A;&#x4E3A;&#x51C6;&#x3002;&#x5982;&#x679C;&#x5728; <code>merge</code> &#x7684;&#x65F6;&#x5019;&#x53D1;&#x751F;&#x4E86;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;Git &#x5C31;&#x4F1A;&#x628A;&#x95EE;&#x9898;&#x4EA4;&#x7ED9;&#x4F60;&#x6765;&#x51B3;&#x5B9A;&#x3002;&#x5177;&#x4F53;&#x5730;&#xFF0C;&#x5B83;&#x4F1A;&#x544A;&#x8BC9;&#x4F60; <code>merge</code> &#x5931;&#x8D25;&#xFF0C;&#x4EE5;&#x53CA;&#x5931;&#x8D25;&#x7684;&#x539F;&#x56E0;&#xFF1A;</p>
+<pre><code class="lang-undefined">git merge feature1
+</code></pre>
+<p><img src="https:////upload-images.jianshu.io/upload_images/11462107-f9280819ff8c6258.png?imageMogr2/auto-orient/strip|imageView2/2/w/539/format/webp" alt="img"></p>
+<p>&#x63D0;&#x793A;&#x4FE1;&#x606F;&#x8BF4;&#xFF0C;&#x5728; <code>shopping list.txt</code> &#x4E2D;&#x51FA;&#x73B0;&#x4E86; &quot;merge conflict&quot;&#xFF0C;&#x81EA;&#x52A8;&#x5408;&#x5E76;&#x5931;&#x8D25;&#xFF0C;&#x8981;&#x6C42; &quot;fix conflicts and then commit the result&quot;&#xFF08;&#x628A;&#x51B2;&#x7A81;&#x89E3;&#x51B3;&#x6389;&#x540E;&#x63D0;&#x4EA4;&#xFF09;&#x3002;&#x90A3;&#x4E48;&#x4F60;&#x73B0;&#x5728;&#x9700;&#x8981;&#x505A;&#x4E24;&#x4EF6;&#x4E8B;&#xFF1A;</p>
+<ol>
+<li>&#x89E3;&#x51B3;&#x6389;&#x51B2;&#x7A81;</li>
+<li>&#x624B;&#x52A8; <code>commit</code> &#x4E00;&#x4E0B;</li>
+</ol>
+<h3 id="1-&#x89E3;&#x51B3;&#x51B2;&#x7A81;">1. &#x89E3;&#x51B3;&#x51B2;&#x7A81;</h3>
+<p>&#x89E3;&#x51B3;&#x6389;&#x51B2;&#x7A81;&#x7684;&#x65B9;&#x5F0F;&#x6709;&#x591A;&#x4E2A;&#xFF0C;&#x6211;&#x73B0;&#x5728;&#x8BF4;&#x6700;&#x76F4;&#x63A5;&#x7684;&#x4E00;&#x4E2A;&#x3002;&#x4F60;&#x73B0;&#x5728;&#x518D;&#x6253;&#x5F00; <code>shopping list.txt</code> &#x770B;&#x4E00;&#x4E0B;&#xFF0C;&#x4F1A;&#x53D1;&#x73B0;&#x5B83;&#x7684;&#x5185;&#x5BB9;&#x53D8;&#x4E86;&#xFF1A;</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/11462107-4d8ee11cfbbcef65.png?imageMogr2/auto-orient/strip|imageView2/2/w/180/format/webp" alt="img"></p>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;Git &#x867D;&#x7136;&#x6CA1;&#x6709;&#x5E2E;&#x4F60;&#x5B8C;&#x6210;&#x81EA;&#x52A8; <code>merge</code>&#xFF0C;&#x4F46;&#x5B83;&#x5BF9;&#x6587;&#x4EF6;&#x8FD8;&#x662F;&#x505A;&#x4E86;&#x4E00;&#x4E9B;&#x5DE5;&#x4F5C;&#xFF1A;&#x5B83;&#x628A;&#x4E24;&#x4E2A;&#x5206;&#x652F;&#x51B2;&#x7A81;&#x7684;&#x5185;&#x5BB9;&#x653E;&#x5728;&#x4E86;&#x4E00;&#x8D77;&#xFF0C;&#x5E76;&#x7528;&#x7B26;&#x53F7;&#x6807;&#x8BB0;&#x51FA;&#x4E86;&#x5B83;&#x4EEC;&#x7684;&#x8FB9;&#x754C;&#x4EE5;&#x53CA;&#x5B83;&#x4EEC;&#x7684;&#x51FA;&#x5904;&#x3002;&#x4E0A;&#x9762;&#x56FE;&#x4E2D;&#x8868;&#x793A;&#xFF0C;<code>HEAD</code> &#x4E2D;&#x7684;&#x5185;&#x5BB9;&#x662F; <code>&#x79FB;&#x52A8;&#x786C;&#x76D8;&#xFF08;&#x5DF2;&#x4E70;&#xFF09;</code>&#xFF0C;&#x800C; <code>feature1</code> &#x4E2D;&#x7684;&#x5185;&#x5BB9;&#x5219;&#x662F; <code>&#x79FB;&#x52A8;&#x786C;&#x76D8;&#xFF08;&#x4E0D;&#x4E70;&#x4E86;&#xFF09;</code>&#x3002;&#x8FD9;&#x4E24;&#x4E2A;&#x6539;&#x52A8; Git &#x4E0D;&#x77E5;&#x9053;&#x5E94;&#x8BE5;&#x600E;&#x6837;&#x5408;&#x5E76;&#xFF0C;&#x4E8E;&#x662F;&#x628A;&#x5B83;&#x4EEC;&#x653E;&#x5728;&#x4E00;&#x8D77;&#xFF0C;&#x7531;&#x4F60;&#x6765;&#x51B3;&#x5B9A;&#x3002;&#x5047;&#x8BBE;&#x4F60;&#x51B3;&#x5B9A;&#x4FDD;&#x7559; <code>HEAD</code> &#x7684;&#x4FEE;&#x6539;&#xFF0C;&#x90A3;&#x4E48;&#x53EA;&#x8981;&#x5220;&#x9664;&#x6389; <code>feature1</code> &#x7684;&#x4FEE;&#x6539;&#xFF0C;&#x518D;&#x628A; Git &#x6DFB;&#x52A0;&#x7684;&#x90A3;&#x4E09;&#x884C; <code>&lt;&lt;&lt;</code> <code>===</code> <code>&gt;&gt;&gt;</code> &#x8F85;&#x52A9;&#x6587;&#x5B57;&#x4E5F;&#x5220;&#x6389;&#xFF0C;&#x4FDD;&#x5B58;&#x6587;&#x4EF6;&#x9000;&#x51FA;&#xFF0C;&#x6240;&#x8C13;&#x7684;&#x300C;&#x89E3;&#x51B3;&#x6389;&#x51B2;&#x7A81;&#x300D;&#x5C31;&#x5B8C;&#x6210;&#x4E86;&#x3002;</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/11462107-9fe3d93790ff53e6.png?imageMogr2/auto-orient/strip|imageView2/2/w/146/format/webp" alt="img"></p>
+<p>&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x4F7F;&#x7528;&#x66F4;&#x65B9;&#x4FBF;&#x7684; <code>merge</code> &#x5DE5;&#x5177;&#x6765;&#x89E3;&#x51B3;&#x51B2;&#x7A81;&#xFF0C;&#x8FD9;&#x4E2A;&#x4F60;&#x53EF;&#x4EE5;&#x81EA;&#x5DF1;&#x641C;&#x7D22;&#x4E00;&#x4E0B;&#x3002;</p>
+<h3 id="2-&#x624B;&#x52A8;&#x63D0;&#x4EA4;">2. &#x624B;&#x52A8;&#x63D0;&#x4EA4;</h3>
+<p>&#x89E3;&#x51B3;&#x5B8C;&#x51B2;&#x7A81;&#x4EE5;&#x540E;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x7B2C;&#x4E8C;&#x6B65;&#x2014;&#x2014; <code>commit</code> &#x4E86;&#x3002;</p>
+<pre><code class="lang-csharp">git add shopping\ list.txt <span class="hljs-meta"># &#x55EF;&#x662F;&#x7684;&#xFF0C;&#x8FD9;&#x91CC; commit &#x524D;&#x4E5F;&#x9700;&#x8981;&#x5148; add &#x4E00;&#x4E0B;</span>
+git commit
+</code></pre>
+<p><img src="https:////upload-images.jianshu.io/upload_images/11462107-0ddfb458483f2570.png?imageMogr2/auto-orient/strip|imageView2/2/w/420/format/webp" alt="img"></p>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x88AB;&#x51B2;&#x7A81;&#x4E2D;&#x65AD;&#x7684; <code>merge</code>&#xFF0C;&#x5728;&#x624B;&#x52A8; <code>commit</code> &#x7684;&#x65F6;&#x5019;&#x4F9D;&#x7136;&#x4F1A;&#x81EA;&#x52A8;&#x586B;&#x5199;&#x63D0;&#x4EA4;&#x4FE1;&#x606F;&#x3002;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;&#x5728;&#x53D1;&#x751F;&#x51B2;&#x7A81;&#x540E;&#xFF0C;Git &#x4ED3;&#x5E93;&#x5904;&#x4E8E;&#x4E00;&#x4E2A;&#x300C;merge &#x51B2;&#x7A81;&#x5F85;&#x89E3;&#x51B3;&#x300D;&#x7684;&#x4E2D;&#x95F4;&#x72B6;&#x6001;&#xFF0C;&#x5728;&#x8FD9;&#x79CD;&#x72B6;&#x6001;&#x4E0B; <code>commit</code>&#xFF0C;Git &#x5C31;&#x4F1A;&#x81EA;&#x52A8;&#x5730;&#x5E2E;&#x4F60;&#x6DFB;&#x52A0;&#x300C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A; merge commit&#x300D;&#x7684;&#x63D0;&#x4EA4;&#x4FE1;&#x606F;&#x3002;</p>
+<h3 id="&#x653E;&#x5F03;&#x89E3;&#x51B3;&#x51B2;&#x7A81;&#xFF0C;&#x53D6;&#x6D88;-merge&#xFF1F;">&#x653E;&#x5F03;&#x89E3;&#x51B3;&#x51B2;&#x7A81;&#xFF0C;&#x53D6;&#x6D88; merge&#xFF1F;</h3>
+<p>&#x540C;&#x7406;&#xFF0C;&#x7531;&#x4E8E;&#x73B0;&#x5728; Git &#x4ED3;&#x5E93;&#x5904;&#x4E8E;&#x51B2;&#x7A81;&#x5F85;&#x89E3;&#x51B3;&#x7684;&#x4E2D;&#x95F4;&#x72B6;&#x6001;&#xFF0C;&#x6240;&#x4EE5;&#x5982;&#x679C;&#x4F60;&#x6700;&#x7EC8;&#x51B3;&#x5B9A;&#x653E;&#x5F03;&#x8FD9;&#x6B21; <code>merge</code>&#xFF0C;&#x4E5F;&#x9700;&#x8981;&#x6267;&#x884C;&#x4E00;&#x6B21; <code>merge --abort</code> &#x6765;&#x624B;&#x52A8;&#x53D6;&#x6D88;&#x5B83;&#xFF1A;</p>
+<pre><code class="lang-cpp">git merge --<span class="hljs-built_in">abort</span>
+</code></pre>
+<p>&#x8F93;&#x5165;&#x8FD9;&#x884C;&#x4EE3;&#x7801;&#xFF0C;&#x4F60;&#x7684; Git &#x4ED3;&#x5E93;&#x5C31;&#x4F1A;&#x56DE;&#x5230; <code>merge</code> &#x524D;&#x7684;&#x72B6;&#x6001;&#x3002;</p>
+<h2 id="&#x7279;&#x6B8A;&#x60C5;&#x51B5;-2&#xFF1A;head-&#x9886;&#x5148;&#x4E8E;&#x76EE;&#x6807;-commit">&#x7279;&#x6B8A;&#x60C5;&#x51B5; 2&#xFF1A;HEAD &#x9886;&#x5148;&#x4E8E;&#x76EE;&#x6807; commit</h2>
+<p>&#x5982;&#x679C; <code>merge</code> &#x65F6;&#x7684;&#x76EE;&#x6807; <code>commit</code> &#x548C; <code>HEAD</code> &#x5904;&#x7684; <code>commit</code> &#x5E76;&#x4E0D;&#x5B58;&#x5728;&#x5206;&#x53C9;&#xFF0C;&#x800C;&#x662F; <code>HEAD</code> &#x9886;&#x5148;&#x4E8E;&#x76EE;&#x6807; <code>commit</code>&#xFF1A;</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/11462107-9aa5b92ba93001c2.png?imageMogr2/auto-orient/strip|imageView2/2/w/361/format/webp" alt="img"></p>
+<p>&#x90A3;&#x4E48; <code>merge</code> &#x5C31;&#x6CA1;&#x5FC5;&#x8981;&#x518D;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684; <code>commit</code> &#x6765;&#x8FDB;&#x884C;&#x5408;&#x5E76;&#x64CD;&#x4F5C;&#xFF0C;&#x56E0;&#x4E3A;&#x5E76;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x9700;&#x8981;&#x5408;&#x5E76;&#x7684;&#x3002;&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C; Git &#x4EC0;&#x4E48;&#x4E5F;&#x4E0D;&#x4F1A;&#x505A;&#xFF0C;<code>merge</code> &#x662F;&#x4E00;&#x4E2A;&#x7A7A;&#x64CD;&#x4F5C;&#x3002;</p>
+<h2 id="&#x7279;&#x6B8A;&#x60C5;&#x51B5;-3&#xFF1A;head-&#x843D;&#x540E;&#x4E8E;-&#x76EE;&#x6807;-commit&#x2014;&#x2014;fast-forward">&#x7279;&#x6B8A;&#x60C5;&#x51B5; 3&#xFF1A;HEAD &#x843D;&#x540E;&#x4E8E; &#x76EE;&#x6807; commit&#x2014;&#x2014;fast-forward</h2>
+<p>&#x800C;&#x53E6;&#x4E00;&#x79CD;&#x60C5;&#x51B5;&#xFF1A;&#x5982;&#x679C; <code>HEAD</code> &#x548C;&#x76EE;&#x6807; <code>commit</code> &#x4F9D;&#x7136;&#x662F;&#x4E0D;&#x5B58;&#x5728;&#x5206;&#x53C9;&#xFF0C;&#x4F46; <code>HEAD</code> &#x4E0D;&#x662F;&#x9886;&#x5148;&#x4E8E;&#x76EE;&#x6807; <code>commit</code>&#xFF0C;&#x800C;&#x662F;&#x843D;&#x540E;&#x4E8E;&#x76EE;&#x6807; <code>commit</code>&#xFF1A;</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/11462107-276e2f98434bacc3.png?imageMogr2/auto-orient/strip|imageView2/2/w/467/format/webp" alt="img"></p>
+<p>&#x90A3;&#x4E48; Git &#x4F1A;&#x76F4;&#x63A5;&#x628A; <code>HEAD</code>&#xFF08;&#x4EE5;&#x53CA;&#x5B83;&#x6240;&#x6307;&#x5411;&#x7684; <code>branch</code>&#xFF0C;&#x5982;&#x679C;&#x6709;&#x7684;&#x8BDD;&#xFF09;&#x79FB;&#x52A8;&#x5230;&#x76EE;&#x6807; <code>commit</code>&#xFF1A;</p>
+<pre><code class="lang-undefined">git merge feature1
+</code></pre>
+<p><img src="https:////upload-images.jianshu.io/upload_images/11462107-339a3d9c74f894d6?imageMogr2/auto-orient/strip|imageView2/2/w/494/format/webp" alt="img"></p>
+<p>&#x8FD9;&#x79CD;&#x64CD;&#x4F5C;&#x6709;&#x4E00;&#x4E2A;&#x4E13;&#x6709;&#x79F0;&#x8C13;&#xFF0C;&#x53EB;&#x505A; &quot;fast-forward&quot;&#xFF08;&#x5FEB;&#x901F;&#x524D;&#x79FB;&#xFF09;&#x3002;</p>
+<p>&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x521B;&#x5EFA;&#x65B0;&#x7684; <code>branch</code> &#x90FD;&#x662F;&#x4F1A;&#x548C;&#x539F; <code>branch</code> &#xFF08;&#x4F8B;&#x5982;&#x4E0A;&#x56FE;&#x4E2D;&#x7684; <code>master</code> &#xFF09;&#x5E76;&#x884C;&#x5F00;&#x53D1;&#x7684;&#xFF0C;&#x4E0D;&#x7136;&#x6CA1;&#x5FC5;&#x8981;&#x5F00; <code>branch</code> &#xFF0C;&#x76F4;&#x63A5;&#x5728;&#x539F; <code>branch</code> &#x4E0A;&#x5F00;&#x53D1;&#x5C31;&#x597D;&#x3002;&#x4F46;&#x4E8B;&#x5B9E;&#x4E0A;&#xFF0C;&#x4E0A;&#x56FE;&#x4E2D;&#x7684;&#x60C5;&#x5F62;&#x5176;&#x5B9E;&#x5F88;&#x5E38;&#x89C1;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x5176;&#x5B9E;&#x662F; <code>pull</code> &#x64CD;&#x4F5C;&#x7684;&#x4E00;&#x79CD;&#x7ECF;&#x5178;&#x60C5;&#x5F62;&#xFF1A;&#x672C;&#x5730;&#x7684; <code>master</code> &#x6CA1;&#x6709;&#x65B0;&#x63D0;&#x4EA4;&#xFF0C;&#x800C;&#x8FDC;&#x7AEF;&#x4ED3;&#x5E93;&#x4E2D;&#x6709;&#x540C;&#x4E8B;&#x63D0;&#x4EA4;&#x4E86;&#x65B0;&#x5185;&#x5BB9;&#x5230; <code>master</code>&#xFF1A;</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/11462107-1e199788c633466b.png?imageMogr2/auto-orient/strip|imageView2/2/w/518/format/webp" alt="img"></p>
+<p>&#x90A3;&#x4E48;&#x8FD9;&#x65F6;&#x5982;&#x679C;&#x5728;&#x672C;&#x5730;&#x6267;&#x884C;&#x4E00;&#x6B21; <code>pull</code> &#x64CD;&#x4F5C;&#xFF0C;&#x5C31;&#x4F1A;&#x7531;&#x4E8E; <code>HEAD</code> &#x843D;&#x540E;&#x4E8E;&#x76EE;&#x6807; <code>commit</code> &#xFF08;&#x4E5F;&#x5C31;&#x662F;&#x8FDC;&#x7AEF;&#x7684; <code>master</code>&#xFF09;&#x800C;&#x9020;&#x6210; &quot;fast-forward&quot;&#xFF1A;</p>
+<pre><code class="lang-undefined">git pull
+</code></pre>
+<p><img src="https:////upload-images.jianshu.io/upload_images/11462107-c98d31694523a13d?imageMogr2/auto-orient/strip|imageView2/2/w/572/format/webp" alt="img"></p>
+<p>&#x7B80;&#x5355;&#x89E3;&#x91CA;&#x4E00;&#x4E0B;&#x4E0A;&#x56FE;&#x4E2D;&#x7684; <code>origin/master</code> &#x548C; <code>origin/HEAD</code> &#x662F;&#x4EC0;&#x4E48;&#x9B3C;&#xFF1A;&#x5B83;&#x4EEC;&#x662F;&#x5BF9;&#x8FDC;&#x7AEF;&#x4ED3;&#x5E93;&#x7684; <code>master</code> &#x548C; <code>HEAD</code> &#x7684;&#x672C;&#x5730;&#x955C;&#x50CF;&#xFF0C;&#x5728; <code>git pull</code> &#x7684;&#x300C;&#x4E24;&#x6B65;&#x8D70;&#x300D;&#x4E2D;&#x7684;&#x7B2C;&#x4E00;&#x6B65;&#x2014;&#x2014;<code>git fetch</code> &#x4E0B;&#x8F7D;&#x8FDC;&#x7AEF;&#x4ED3;&#x5E93;&#x5185;&#x5BB9;&#x65F6;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x955C;&#x50CF;&#x5F15;&#x7528;&#x5F97;&#x5230;&#x4E86;&#x66F4;&#x65B0;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x4E0A;&#x9762;&#x8FD9;&#x4E2A;&#x52A8;&#x56FE;&#x4E2D;&#x7684;&#x7B2C;&#x4E00;&#x6B65;&#xFF1A;<code>origin/master</code> &#x548C; <code>origin/HEAD</code> &#x79FB;&#x52A8;&#x5230;&#x4E86;&#x6700;&#x65B0;&#x7684; <code>commit</code>&#x3002;</p>
+<blockquote>
+<p>&#x4E3A;&#x4EC0;&#x4E48;&#x524D;&#x9762;&#x7684;&#x56FE;&#x91CC;&#x9762;&#x4ECE;&#x6765;&#x90FD;&#x6CA1;&#x6709;&#x8FD9;&#x4E24;&#x4E2A;&#x300C;&#x955C;&#x50CF;&#x5F15;&#x7528;&#x300D;&#xFF1F;&#x56E0;&#x4E3A;&#x6211;&#x6CA1;&#x6709;&#x753B;&#x5440;&#xFF01;&#x5176;&#x5B9E;&#x5B83;&#x4EEC;&#x662F;&#x4E00;&#x76F4;&#x5B58;&#x5728;&#x7684;&#x3002;</p>
+</blockquote>
+<p>&#x800C; <code>git pull</code> &#x7684;&#x7B2C;&#x4E8C;&#x6B65;&#x64CD;&#x4F5C; <code>merge</code> &#x7684;&#x76EE;&#x6807; <code>commit</code> &#xFF0C;&#x662F;&#x8FDC;&#x7AEF;&#x4ED3;&#x5E93;&#x7684; <code>HEAD</code>&#xFF0C;&#x4E5F;&#x5C31;&#x662F; <code>origin/HEAD</code> &#xFF0C;&#x6240;&#x4EE5; <code>git pull</code> &#x7684;&#x7B2C;&#x4E8C;&#x6B65;&#x7684;&#x5B8C;&#x6574;&#x5185;&#x5BB9;&#x662F;&#xFF1A;</p>
+<pre><code class="lang-undefined">git merge origin/HEAD
+</code></pre>
+<p>&#x56E0;&#x6B64; <code>HEAD</code> &#x5C31;&#x4F1A;&#x5E26;&#x7740; <code>master</code> &#x4E00;&#x8D77;&#xFF0C;&#x4E5F;&#x6307;&#x5411;&#x56FE;&#x4E2D;&#x7EFF;&#x8272;&#x7684;&#x6700;&#x65B0; <code>commit</code> &#x4E86;&#x3002;</p>
+<h2 id="&#x5C0F;&#x7ED3;">&#x5C0F;&#x7ED3;</h2>
+<p>&#x672C;&#x8282;&#x5BF9; <code>merge</code> &#x8FDB;&#x884C;&#x4E86;&#x4ECB;&#x7ECD;&#xFF0C;&#x5185;&#x5BB9;&#x5927;&#x6982;&#x6709;&#x8FD9;&#x4E48;&#x51E0;&#x70B9;&#xFF1A;</p>
+<ol>
+<li><p><code>merge</code> &#x7684;&#x542B;&#x4E49;&#xFF1A;&#x4ECE;&#x4E24;&#x4E2A; <code>commit</code>&#x300C;&#x5206;&#x53C9;&#x300D;&#x7684;&#x4F4D;&#x7F6E;&#x8D77;&#xFF0C;&#x628A;&#x76EE;&#x6807; <code>commit</code> &#x7684;&#x5185;&#x5BB9;&#x5E94;&#x7528;&#x5230;&#x5F53;&#x524D; <code>commit</code>&#xFF08;<code>HEAD</code> &#x6240;&#x6307;&#x5411;&#x7684; <code>commit</code>&#xFF09;&#xFF0C;&#x5E76;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x65B0;&#x7684; <code>commit</code>&#xFF1B;</p>
+</li>
+<li><pre><code>merge
+</code></pre><p> &#x7684;&#x9002;&#x7528;&#x573A;&#x666F;&#xFF1A;</p>
+<ol>
+<li>&#x5355;&#x72EC;&#x5F00;&#x53D1;&#x7684; <code>branch</code> &#x7528;&#x5B8C;&#x4E86;&#x4EE5;&#x540E;&#xFF0C;&#x5408;&#x5E76;&#x56DE;&#x539F;&#x5148;&#x7684; <code>branch</code>&#xFF1B;</li>
+<li><code>git pull</code> &#x7684;&#x5185;&#x90E8;&#x81EA;&#x52A8;&#x64CD;&#x4F5C;&#x3002;</li>
+</ol>
+</li>
+<li><pre><code>merge
+</code></pre><p> &#x7684;&#x4E09;&#x79CD;&#x7279;&#x6B8A;&#x60C5;&#x51B5;&#xFF1A;</p>
+<ol>
+<li>&#x51B2;&#x7A81;<ol>
+<li>&#x539F;&#x56E0;&#xFF1A;&#x5F53;&#x524D;&#x5206;&#x652F;&#x548C;&#x76EE;&#x6807;&#x5206;&#x652F;&#x4FEE;&#x6539;&#x4E86;&#x540C;&#x4E00;&#x90E8;&#x5206;&#x5185;&#x5BB9;&#xFF0C;Git &#x65E0;&#x6CD5;&#x786E;&#x5B9A;&#x5E94;&#x8BE5;&#x600E;&#x6837;&#x5408;&#x5E76;&#xFF1B;</li>
+<li>&#x5E94;&#x5BF9;&#x65B9;&#x6CD5;&#xFF1A;&#x89E3;&#x51B3;&#x51B2;&#x7A81;&#x540E;&#x624B;&#x52A8; <code>commit</code>&#x3002;</li>
+</ol>
+</li>
+<li><code>HEAD</code> &#x9886;&#x5148;&#x4E8E;&#x76EE;&#x6807; <code>commit</code>&#xFF1A;Git &#x4EC0;&#x4E48;&#x4E5F;&#x4E0D;&#x505A;&#xFF0C;&#x7A7A;&#x64CD;&#x4F5C;&#xFF1B;</li>
+<li><code>HEAD</code> &#x843D;&#x540E;&#x4E8E;&#x76EE;&#x6807; <code>commit</code>&#xFF1A;fast-forward&#x3002;</li>
+</ol>
+</li>
+</ol>
+<p>&#x4F5C;&#x8005;&#xFF1A;&#x5C0F;&#x5F3A;&#x5510;
+&#x94FE;&#x63A5;&#xFF1A;<a href="https://www.jianshu.com/p/1a7e38cdbf76" target="_blank">https://www.jianshu.com/p/1a7e38cdbf76</a>
+&#x6765;&#x6E90;&#xFF1A;&#x7B80;&#x4E66;
+&#x8457;&#x4F5C;&#x6743;&#x5F52;&#x4F5C;&#x8005;&#x6240;&#x6709;&#x3002;&#x5546;&#x4E1A;&#x8F6C;&#x8F7D;&#x8BF7;&#x8054;&#x7CFB;&#x4F5C;&#x8005;&#x83B7;&#x5F97;&#x6388;&#x6743;&#xFF0C;&#x975E;&#x5546;&#x4E1A;&#x8F6C;&#x8F7D;&#x8BF7;&#x6CE8;&#x660E;&#x51FA;&#x5904;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Git使用教程.html" class="navigation navigation-prev " aria-label="Previous page: Git使用教程">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="push 的本质.html" class="navigation navigation-next " aria-label="Next page: push 的本质.md">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"merge：合并 commits","level":"1.2.2","depth":2,"next":{"title":"push 的本质.md","level":"1.2.3","depth":2,"path":"push 的本质.md","ref":"push 的本质.md","articles":[]},"previous":{"title":"Git使用教程","level":"1.2.1","depth":2,"path":"Git使用教程.md","ref":"Git使用教程.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"merge：合并 commits.md","mtime":"2022-04-22T12:47:56.607Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-22T12:59:34.029Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
